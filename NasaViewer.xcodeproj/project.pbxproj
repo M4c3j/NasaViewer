@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		CF47BCB729C8B5F300D57E95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47BCB629C8B5F300D57E95 /* AppDelegate.swift */; };
 		CF47BCB929C8B5F300D57E95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47BCB829C8B5F300D57E95 /* SceneDelegate.swift */; };
-		CF47BCBB29C8B5F300D57E95 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47BCBA29C8B5F300D57E95 /* ViewController.swift */; };
-		CF47BCBE29C8B5F300D57E95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF47BCBC29C8B5F300D57E95 /* Main.storyboard */; };
+		CF47BCBB29C8B5F300D57E95 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47BCBA29C8B5F300D57E95 /* MainViewController.swift */; };
 		CF47BCC029C8B5F400D57E95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF47BCBF29C8B5F400D57E95 /* Assets.xcassets */; };
 		CF47BCC329C8B5F400D57E95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF47BCC129C8B5F400D57E95 /* LaunchScreen.storyboard */; };
+		CF47BCCC29CB935400D57E95 /* PrivateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47BCCB29CB935400D57E95 /* PrivateData.swift */; };
+		CF47BCCE29CB93E400D57E95 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CF47BCCD29CB93E400D57E95 /* .gitignore */; };
+		CF47BCD029CB953A00D57E95 /* DoNotGitIgnore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47BCCF29CB953A00D57E95 /* DoNotGitIgnore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CF47BCB329C8B5F300D57E95 /* NasaViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NasaViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF47BCB629C8B5F300D57E95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF47BCB829C8B5F300D57E95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CF47BCBA29C8B5F300D57E95 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CF47BCBD29C8B5F300D57E95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CF47BCBA29C8B5F300D57E95 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CF47BCBF29C8B5F400D57E95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF47BCC229C8B5F400D57E95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF47BCC429C8B5F400D57E95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF47BCCB29CB935400D57E95 /* PrivateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateData.swift; sourceTree = "<group>"; };
+		CF47BCCD29CB93E400D57E95 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		CF47BCCF29CB953A00D57E95 /* DoNotGitIgnore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoNotGitIgnore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +62,23 @@
 			children = (
 				CF47BCB629C8B5F300D57E95 /* AppDelegate.swift */,
 				CF47BCB829C8B5F300D57E95 /* SceneDelegate.swift */,
-				CF47BCBA29C8B5F300D57E95 /* ViewController.swift */,
-				CF47BCBC29C8B5F300D57E95 /* Main.storyboard */,
+				CF47BCBA29C8B5F300D57E95 /* MainViewController.swift */,
+				CF47BCCA29CB933400D57E95 /* Services */,
 				CF47BCBF29C8B5F400D57E95 /* Assets.xcassets */,
 				CF47BCC129C8B5F400D57E95 /* LaunchScreen.storyboard */,
 				CF47BCC429C8B5F400D57E95 /* Info.plist */,
+				CF47BCCD29CB93E400D57E95 /* .gitignore */,
 			);
 			path = NasaViewer;
+			sourceTree = "<group>";
+		};
+		CF47BCCA29CB933400D57E95 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CF47BCCB29CB935400D57E95 /* PrivateData.swift */,
+				CF47BCCF29CB953A00D57E95 /* DoNotGitIgnore.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,8 +140,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF47BCC329C8B5F400D57E95 /* LaunchScreen.storyboard in Resources */,
+				CF47BCCE29CB93E400D57E95 /* .gitignore in Resources */,
 				CF47BCC029C8B5F400D57E95 /* Assets.xcassets in Resources */,
-				CF47BCBE29C8B5F300D57E95 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +152,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF47BCBB29C8B5F300D57E95 /* ViewController.swift in Sources */,
+				CF47BCBB29C8B5F300D57E95 /* MainViewController.swift in Sources */,
+				CF47BCCC29CB935400D57E95 /* PrivateData.swift in Sources */,
 				CF47BCB729C8B5F300D57E95 /* AppDelegate.swift in Sources */,
+				CF47BCD029CB953A00D57E95 /* DoNotGitIgnore.swift in Sources */,
 				CF47BCB929C8B5F300D57E95 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +163,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CF47BCBC29C8B5F300D57E95 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CF47BCBD29C8B5F300D57E95 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CF47BCC129C8B5F400D57E95 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +300,6 @@
 				INFOPLIST_FILE = NasaViewer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -302,6 +309,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = MaciejLipiec.NasaViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -320,7 +330,6 @@
 				INFOPLIST_FILE = NasaViewer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -330,6 +339,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = MaciejLipiec.NasaViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
