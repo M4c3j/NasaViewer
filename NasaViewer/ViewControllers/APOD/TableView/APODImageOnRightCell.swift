@@ -5,14 +5,19 @@
 //  Created by Maciej Lipiec on 2023-03-22.
 //
 
+//TODO: TODO
+/*
+ 2. Download image after loading page
+
+*/
 import UIKit
 
-class ImageOnLeftCell: UITableViewCell, NasaImageServiceDelegate {
-    
+class APODImageOnRightCell: UITableViewCell, NasaImageServiceDelegate {
+
     let imageService = NasaImageService()
     var data: PictureOfTheDay? = nil
     
-    static let identifier = "ImageOnLeftCell"
+    static let identifier = "ImageOnRightCell"
     
     let spacingImageText: CGFloat = 5
     let image = UIImageView()
@@ -23,7 +28,7 @@ class ImageOnLeftCell: UITableViewCell, NasaImageServiceDelegate {
     let copyright = UILabel()
     let activityIndicator = UIActivityIndicatorView()
     
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         imageService.delegate = self
@@ -50,7 +55,7 @@ class ImageOnLeftCell: UITableViewCell, NasaImageServiceDelegate {
     
     public func configureCell(data: PictureOfTheDay) {
         guard let url = data.url else {
-            print("Failed to get url from data.url in configureCell")
+            print("Failed to get url from data.url in configureCell \(self)")
             return
         }
         imageService.downloadImage(from: url)
@@ -78,26 +83,26 @@ class ImageOnLeftCell: UITableViewCell, NasaImageServiceDelegate {
     
     private func createImage() {
         contentView.addSubview(image)
+        image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.cornerRadius = 10
         image.clipsToBounds = true
         image.contentMode = .scaleAspectFill
         NSLayoutConstraint.activate([
             image.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             image.widthAnchor.constraint(equalToConstant: 100),
             image.heightAnchor.constraint(equalToConstant: 100)
         ])
         activityIndicator.style = .large
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(activityIndicator)
         NSLayoutConstraint.activate([
             activityIndicator.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            activityIndicator.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            activityIndicator.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             activityIndicator.widthAnchor.constraint(equalToConstant: 100),
             activityIndicator.heightAnchor.constraint(equalToConstant: 100)
         ])
         activityIndicator.startAnimating()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func createTitle() {
@@ -108,10 +113,9 @@ class ImageOnLeftCell: UITableViewCell, NasaImageServiceDelegate {
         title.adjustsFontSizeToFitWidth = false
         title.textAlignment = .left
         NSLayoutConstraint.activate([
-            title.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: spacingImageText),
-            title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            title.topAnchor.constraint(equalTo: image.topAnchor),
-            title.heightAnchor.constraint(equalToConstant: title.font.pointSize)
+            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            title.trailingAnchor.constraint(equalTo: image.leadingAnchor, constant: -spacingImageText),
+            title.topAnchor.constraint(equalTo: image.topAnchor)
         ])
     }
     
@@ -120,13 +124,12 @@ class ImageOnLeftCell: UITableViewCell, NasaImageServiceDelegate {
         descriptionText.translatesAutoresizingMaskIntoConstraints = false
         descriptionText.text = data?.explanation ?? "Description"
         descriptionText.textAlignment = .justified
-        
         descriptionText.font = .preferredFont(forTextStyle: .caption1)
         descriptionText.numberOfLines = 4
         descriptionText.clipsToBounds = true
         NSLayoutConstraint.activate([
-            descriptionText.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: spacingImageText),
-            descriptionText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            descriptionText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            descriptionText.trailingAnchor.constraint(equalTo: image.leadingAnchor, constant: -spacingImageText),
             descriptionText.topAnchor.constraint(equalTo: title.bottomAnchor)
         ])
     }
@@ -140,9 +143,9 @@ class ImageOnLeftCell: UITableViewCell, NasaImageServiceDelegate {
         clockSF.contentMode = .scaleAspectFill
         clockSF.image = symbol
         NSLayoutConstraint.activate([
-            clockSF.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: spacingImageText),
-            clockSF.widthAnchor.constraint(equalToConstant: 14),
+            clockSF.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             clockSF.topAnchor.constraint(equalTo: descriptionText.bottomAnchor, constant: spacingImageText),
+            clockSF.widthAnchor.constraint(equalToConstant: 14),
             clockSF.bottomAnchor.constraint(equalTo: image.bottomAnchor)
         ])
     }
@@ -181,7 +184,7 @@ class ImageOnLeftCell: UITableViewCell, NasaImageServiceDelegate {
         copyright.numberOfLines = 1
         NSLayoutConstraint.activate([
             copyright.leadingAnchor.constraint(equalTo: date.trailingAnchor),
-            copyright.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            copyright.trailingAnchor.constraint(equalTo: image.leadingAnchor, constant: -spacingImageText),
             copyright.topAnchor.constraint(equalTo: date.topAnchor),
             copyright.bottomAnchor.constraint(equalTo: image.bottomAnchor)
         ])
@@ -189,16 +192,14 @@ class ImageOnLeftCell: UITableViewCell, NasaImageServiceDelegate {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         // Configure the view for the selected state
     }
     
 }
 
-
 #if DEBUG
 import SwiftUI
-struct ImageOnLeftCell_Preview: PreviewProvider {
-    static var previews: some View = Preview(for: ImageOnLeftCell())
+struct ImageOnRightCell_Preview: PreviewProvider {
+    static var previews: some View = Preview(for: APODImageOnRightCell())
 }
 #endif

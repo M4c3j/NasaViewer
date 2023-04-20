@@ -8,8 +8,79 @@ class NasaService {
     
     init() {}
     
+    func getFrom(month: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        //check if date is not before first APOD
+        let firstDayOfMonth: Date = {
+            let firstDay = month.firstDayOfMonth()
+            guard let firstAPODDate = Calendar.current.date(from: DateComponents(year: 1995, month: 6, day: 16)) else {
+                print("Failed to unwrapp firstAPODDate in \(self)")
+                return firstDay
+            }
+            if firstDay <  firstAPODDate {
+                return firstAPODDate
+            } else {
+                return firstDay
+            }
+        }()
+        let beginingDate = dateFormatter.string(from: firstDayOfMonth)
+        //check if date is not after latest apod
+        let lastDayOfMonth: Date = {
+            let lastDay = month.lastDayOfMonth()
+            if lastDay > Date() {
+                return Date()
+            } else {
+                return lastDay
+            }
+        }()
+        let endDate = dateFormatter.string(from: lastDayOfMonth)
+        guard let url = URL(string: "\(self.url)&start_date=\(beginingDate)&end_date=\(endDate)") else {
+            print("Bad url in getFrom(day: Date)")
+            return
+        }
+        print(url.absoluteString)
+        NasaService.downloadData(fromUrl: url) { downloadedData in
+            if let data = downloadedData {
+                guard let decodedData = try? JSONDecoder().decode([PictureOfTheDay].self, from: data) else {
+                    print("Failed to decode data in getRandom(quantity: Int) func")
+                    return
+                }
+                DispatchQueue.main.async { [weak self] in
+                    self?.articles = decodedData
+                    self?.delegate?.articlesDataDidDownloaded()
+                }
+            } else {
+                print("No data returned in getRandom(quantity: Int) func")
+            }
+        }
+    }
+
+
+    
     func getFrom(day: Date) {
-        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let stringDate = dateFormatter.string(from: day)
+        print(stringDate)
+        guard let url = URL(string: "\(self.url)&date=\(stringDate)") else {
+            print("Bad url in getFrom(day: Date)")
+            return
+        }
+        NasaService.downloadData(fromUrl: url) { downloadedData in
+            if let data = downloadedData {
+                guard let decodedData = try? JSONDecoder().decode(PictureOfTheDay.self, from: data) else {
+                    print("Failed to decode data in getRandom(quantity: Int) func")
+                    return
+                }
+                DispatchQueue.main.async { [weak self] in
+                    self?.articles = [decodedData]
+                    self?.delegate?.articlesDataDidDownloaded()
+                }
+            } else {
+                print("No data returned in getRandom(quantity: Int) func")
+            }
+        }
     }
     
     func getRandom(quantity: Int) {
@@ -24,14 +95,7 @@ class NasaService {
                     return
                 }
                 DispatchQueue.main.async { [weak self] in
-                    self?.articles.append(contentsOf: decodedData.filter({return $0.mediaType == "image"}))
-                    guard let downloadedArticles = self?.articles.count else {
-                        print("failed to count downloadedArticles in getRandom")
-                        return
-                    }
-                    if downloadedArticles < quantity {
-                        self?.getRandom(quantity: quantity - downloadedArticles)
-                    }
+                    self?.articles = decodedData
                     self?.delegate?.articlesDataDidDownloaded()
                 }
             } else {

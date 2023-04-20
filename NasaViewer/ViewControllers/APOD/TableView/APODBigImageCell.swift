@@ -8,13 +8,13 @@
 import UIKit
 import SwiftUI
 
-class BigImageCell: UITableViewCell, NasaImageServiceDelegate {
+class APODBigImageCell: UITableViewCell, NasaImageServiceDelegate {
 
     static var identifier = "BigImageCell"
     let imageService = NasaImageService()
     var data: PictureOfTheDay? = nil
-    var hostingController: UIHostingController<BigImageCell_SwiftUI>?
-    let swiftUIView = BigImageCell_SwiftUI(image: UIImage(systemName: "arrow.clockwise"), title: "", description: "", date: "", copyright: "")
+    var hostingController: UIHostingController<APODBigImageCellSwiftUI>?
+    let swiftUIView = APODBigImageCellSwiftUI(image: UIImage(systemName: "arrow.clockwise"), title: "", description: "", date: "", copyright: "")
      
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

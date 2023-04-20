@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
+import AVKit
 
-struct BigImageCell_SwiftUI: View {
+struct APODBigImageCellSwiftUI: View {
     
     //MARK: PROPERTIES
     var image: UIImage?
@@ -57,6 +58,7 @@ struct BigImageCell_SwiftUI: View {
     }    
 }
 
+
 struct BigImageCell_SwiftUI_Previews: PreviewProvider {
     
     static var image = UIImage(named: "DaVinciRisingLikaiLin_1024")
@@ -66,7 +68,7 @@ struct BigImageCell_SwiftUI_Previews: PreviewProvider {
     static var copyright = "Copyright"
     
     static var previews: some View {
-        BigImageCell_SwiftUI(image: image, title: title, description: description, date: date, copyright: copyright)
+        APODBigImageCellSwiftUI(image: image, title: title, description: description, date: date, copyright: copyright)
             .previewLayout(.sizeThatFits)
     }
 }

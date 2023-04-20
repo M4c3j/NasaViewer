@@ -36,6 +36,5 @@ struct PictureOfTheDay: Codable {
 #endif
 }
 
-//typealias PictureOfTheDay = [PictureOfTheDayElement]
 
 

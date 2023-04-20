@@ -7,10 +7,9 @@
 
 import UIKit
 
-let API_KEY = "sxne1jfOjfyTbNtSTLORHh96OWyAZg73X8XFvVt7"
-let API_KEY_2 = "WZLcvI2hX6U5Nb5lu3dkS73hfkYxjjCpLxzoydxU"
 
-class MainViewController: UIViewController, NasaServiceGetRandomDidFinishDownloading {
+
+class APODTableViewController: UIViewController, NasaServiceGetRandomDidFinishDownloading {
         
     let tableView = UITableView()
     var data: [PictureOfTheDay] = []
@@ -18,13 +17,30 @@ class MainViewController: UIViewController, NasaServiceGetRandomDidFinishDownloa
     var selectedRow: IndexPath?
     var rowsPosition: [IndexPath]?
     
+    init(articlesFromSelectedMonth: Date) {
+        nasaData.getFrom(month: articlesFromSelectedMonth)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(articleFromDate: Date) {
+        nasaData.getFrom(day: articleFromDate)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(randomArticles: Int) {
+        nasaData.getRandom(quantity: randomArticles)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createTableView()
         nasaData.delegate = self
-        nasaData.getRandom(quantity: 50)
         configureNavController()
-        
     }
     
     func articlesDataDidDownloaded() {
