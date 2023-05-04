@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CF0525D829F0827800A2A31E /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0525D729F0827800A2A31E /* Notifications.swift */; };
+		CF0EDF8029F71FC5009B2AFD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CF0EDF7F29F71FC5009B2AFD /* README.md */; };
+		CF0EDF8229F72043009B2AFD /* APODURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0EDF8129F72043009B2AFD /* APODURL.swift */; };
 		CF23FD7F29DB6637007D08FA /* APODMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF23FD7E29DB6637007D08FA /* APODMainMenuViewController.swift */; };
 		CF47BCB729C8B5F300D57E95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47BCB629C8B5F300D57E95 /* AppDelegate.swift */; };
 		CF47BCB929C8B5F300D57E95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47BCB829C8B5F300D57E95 /* SceneDelegate.swift */; };
@@ -35,8 +37,9 @@
 
 /* Begin PBXFileReference section */
 		CF0525D729F0827800A2A31E /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		CF0EDF7F29F71FC5009B2AFD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CF0EDF8129F72043009B2AFD /* APODURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODURL.swift; sourceTree = "<group>"; };
 		CF23FD7E29DB6637007D08FA /* APODMainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODMainMenuViewController.swift; sourceTree = "<group>"; };
-		CF23FD8029DB89F9007D08FA /* Implementing yt to play inline.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Implementing yt to play inline.md"; sourceTree = "<group>"; };
 		CF47BCB329C8B5F300D57E95 /* NasaViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NasaViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF47BCB629C8B5F300D57E95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF47BCB829C8B5F300D57E95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +77,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF0EDF7829F6FD5E009B2AFD /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				CF47BCE329CCE93500D57E95 /* NasaService.swift */,
+				CF47BCE529CCEB3500D57E95 /* NasaImageService.swift */,
+				CF0EDF8129F72043009B2AFD /* APODURL.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		CF23FD7D29DB657D007D08FA /* MainMenuView */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +126,7 @@
 				CF47BCC129C8B5F400D57E95 /* LaunchScreen.storyboard */,
 				CF47BCC429C8B5F400D57E95 /* Info.plist */,
 				CF47BCCD29CB93E400D57E95 /* .gitignore */,
-				CF23FD8029DB89F9007D08FA /* Implementing yt to play inline.md */,
+				CF0EDF7F29F71FC5009B2AFD /* README.md */,
 			);
 			path = NasaViewer;
 			sourceTree = "<group>";
@@ -164,8 +177,7 @@
 		CF47BCE229CCE91E00D57E95 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				CF47BCE329CCE93500D57E95 /* NasaService.swift */,
-				CF47BCE529CCEB3500D57E95 /* NasaImageService.swift */,
+				CF0EDF7829F6FD5E009B2AFD /* Networking */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -247,6 +259,7 @@
 			files = (
 				CF47BCD829CBAB2100D57E95 /* ExamplePictureOfTheDay.json in Resources */,
 				CF47BCC329C8B5F400D57E95 /* LaunchScreen.storyboard in Resources */,
+				CF0EDF8029F71FC5009B2AFD /* README.md in Resources */,
 				CF47BCCE29CB93E400D57E95 /* .gitignore in Resources */,
 				CF47BCC029C8B5F400D57E95 /* Assets.xcassets in Resources */,
 			);
@@ -269,6 +282,7 @@
 				CF47BCBB29C8B5F300D57E95 /* APODTableViewController.swift in Sources */,
 				CF23FD7F29DB6637007D08FA /* APODMainMenuViewController.swift in Sources */,
 				CF47BCD229CBA1A300D57E95 /* APODTableViewController+Configuration.swift in Sources */,
+				CF0EDF8229F72043009B2AFD /* APODURL.swift in Sources */,
 				CF47BCD629CBA9F800D57E95 /* PictureOfTheDayModel.swift in Sources */,
 				CF47BCE629CCEB3500D57E95 /* NasaImageService.swift in Sources */,
 				CF47BCB729C8B5F300D57E95 /* AppDelegate.swift in Sources */,

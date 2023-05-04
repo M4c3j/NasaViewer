@@ -34,7 +34,6 @@ extension APODMainMenuViewController {
     }
     
     func dispatchNotification() {
-        #warning("Change title and try to get it from URL instead")
         let identifier = "MainNotification"
         let title = "Have you already checked todays APOD?"
         let body = "Check todays Astronomy Picture of the Day"

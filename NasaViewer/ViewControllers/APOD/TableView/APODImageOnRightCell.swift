@@ -58,7 +58,13 @@ class APODImageOnRightCell: UITableViewCell, NasaImageServiceDelegate {
             print("Failed to get url from data.url in configureCell \(self)")
             return
         }
-        imageService.downloadImage(from: url)
+        do
+        {
+            try imageService.downloadImage(from: url)
+        }
+        catch {
+            self.image.image = UIImage(named: "x.circle.fill")
+        }
         title.text = data.title
         descriptionText.text = data.explanation
         if let date = data.date {

@@ -11,6 +11,7 @@ import SwiftUI
 class APODMainMenuViewController: UIViewController {
     
     var contentView: UIHostingController<APODMainMenuSwiftUIView>!
+    var alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,23 +53,50 @@ class APODMainMenuViewController: UIViewController {
             contentView.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
         self.checkforPermission()
+        self.addCancelToButton()
     }
     
     private func pushViewWithRandomArticles() {
-        self.navigationController?.pushViewController(APODTableViewController(randomArticles: 10), animated: true)
+        do {
+            self.navigationController?.pushViewController(try APODTableViewController(randomArticles: 10), animated: true)
+        } catch {
+            self.showError(String(describing: error))
+        }
     }
     
     private func pushViewFromSelectedDay(date: Date) {
-        self.navigationController?.pushViewController(APODTableViewController(articleFromDate: date), animated: true)
+        do {
+            self.navigationController?.pushViewController(try APODTableViewController(articleFromDate: date), animated: true)
+        } catch {
+            self.showError(String(describing: error))
+        }
+
     }
     
     private func pushViewFromSelectedMonth(date: Date) {
-        self.navigationController?.pushViewController(APODTableViewController(articlesFromSelectedMonth: date), animated: true)
+        do {
+            self.navigationController?.pushViewController(try APODTableViewController(articlesFromSelectedMonth: date), animated: true)
+        } catch {
+            self.showError(String(describing: error))
+        }
+    }
+    
+    private func addCancelToButton() {
+        self.alert.addAction(UIAlertAction(title: "OK", style: .cancel))
     }
     
 }
 
+extension APODMainMenuViewController {
+    
+    private func showError(_ message: String) {
+        self.alert.title = "Ups.."
+        self.alert.message = message
 
+        present(alert, animated: true)
+    }
+    
+}
 
 
 
