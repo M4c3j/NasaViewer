@@ -31,7 +31,13 @@ class APODBigImageCell: UITableViewCell, NasaImageServiceDelegate {
             print("Failed to get url from data.url in configureCell")
             return
         }
-        imageService.downloadImage(from: url)
+        do
+        {
+            try imageService.downloadImage(from: url)
+        }
+        catch {
+            hostingController?.rootView.image = UIImage(named: "x.circle.fill")
+        }
         hostingController?.rootView.image = nil
         hostingController?.rootView.title = data.title ?? "Title"
         hostingController?.rootView.description = data.explanation ?? "Description"

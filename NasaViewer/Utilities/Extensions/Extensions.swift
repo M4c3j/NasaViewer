@@ -57,12 +57,46 @@ extension View {
 extension Date {
     
     func firstDayOfMonth() -> Date {
-            return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
     }
     
     func lastDayOfMonth() -> Date {
         return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.firstDayOfMonth())!
     }
     
+    func firstDayOfMonthOrFirstAPODDate() -> Date {
+        let firstDay = self.firstDayOfMonth()
+        guard let firstAPODDate = Calendar.current.date(from: DateComponents(year: 1995, month: 6, day: 16)) else {
+            print("Failed to unwrapp firstAPODDate in \(self)")
+            return firstDay
+        }
+        return firstDay <  firstAPODDate ? firstAPODDate : firstDay
+    }
+    
+    func lastDayOfMonthOrToday() -> Date {
+        let lastDay = self.lastDayOfMonth()
+        return lastDay > Date() ? Date() : lastDay
+    }
+    
+    ///Returns (Date, Date) which are (startDate, endDate). Func checks if beginning date is not before first APODDate and if date is not in the future.
+    func APODBStartEndDates() -> (Date, Date) {
+        return (self.firstDayOfMonthOrFirstAPODDate(), self.lastDayOfMonthOrToday())
+    }
+    ///Return in "yyyy-MM-dd" string format
+    func getFormattedDateToString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: self)
+    }
+    
+    ///Returns formatted start date in 2023-05-10 format
+    func getAndFormatStartDateToString() -> String {
+        APODBStartEndDates().0.getFormattedDateToString()
+    }
+    
+    ///Returns formatted end date in 2023-05-10 format
+    func getAndFormatEndDateToString() -> String {
+        APODBStartEndDates().1.getFormattedDateToString()
+    }
 }
 

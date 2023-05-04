@@ -17,18 +17,18 @@ class APODTableViewController: UIViewController, NasaServiceGetRandomDidFinishDo
     var selectedRow: IndexPath?
     var rowsPosition: [IndexPath]?
     
-    init(articlesFromSelectedMonth: Date) {
-        nasaData.getFrom(month: articlesFromSelectedMonth)
+    init(articlesFromSelectedMonth: Date) throws {
+        try nasaData.getFrom(month: articlesFromSelectedMonth)
         super.init(nibName: nil, bundle: nil)
     }
     
-    init(articleFromDate: Date) {
-        nasaData.getFrom(day: articleFromDate)
+    init(articleFromDate: Date) throws {
+        try nasaData.getFrom(day: articleFromDate)
         super.init(nibName: nil, bundle: nil)
     }
     
-    init(randomArticles: Int) {
-        nasaData.getRandom(quantity: randomArticles)
+    init(randomArticles: Int) throws {
+        try nasaData.getRandom(quantity: randomArticles)
         super.init(nibName: nil, bundle: nil)
     }
     
