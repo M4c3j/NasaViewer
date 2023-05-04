@@ -46,7 +46,6 @@ final class NasaService {
             throw NasaServiceError.badUrl
         }
         let data = try NasaService.downloadData(fromUrl: url)
-        let decodedData = try JSONDecoder().decode([PictureOfTheDay].self, from: data)
         if isMoreThanOneArticle {
             let decodedData = try JSONDecoder().decode([PictureOfTheDay].self, from: data)
             DispatchQueue.main.async {
